@@ -68,17 +68,37 @@ MySQL [test]>
 
 ## Configuration
 ### MariaDB Servers
-Two MariaDB master servers are configured to run with Docker, each initialized with a server ID and binlog format:
+Two MariaDB master servers are configured to run with Docker, each initialized with a server ID and configuration directory:
 
 - master1:
     - Port: 4001
     - Server ID: 3000
     - Configuration: /sql/master1
 
-- master2:
+- replica:
     - Port: 4002
     - Server ID: 3001
     - Configuration: /sql/master2
+
+### Maxscale
+MaxScale is configured with the following section in [example.cnf](./maxscale-docker/maxscale/maxscale.cnf.d/example.cnf):
+
+```
+[server1]
+type=server
+address=master1
+port=3306
+protocol=MariaDBBackend
+
+[server2]
+type=server
+address=master2
+port=3306
+protocol=MariaDBBackend
+```
+
+### Sharded 
+configured with the following section in [example.cnf](./maxscale-docker/maxscale/maxscale.cnf.d/example.cnf):
 
 
 
