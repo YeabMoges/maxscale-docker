@@ -46,20 +46,20 @@ sudo docker-compose exec maxscale maxctrl list servers
 
 The result should look something like this
 ```
-┌─────────┬─────────┬──────┬─────────────┬─────────────────┬──────────┐
-│ Server  │ Address │ Port │ Connections │ State           │ GTID     │
-├─────────┼─────────┼──────┼─────────────┼─────────────────┼──────────┤
-│ master1 │ master1 │ 3306 │ 0           │ Master, Running │          │
-├─────────┼─────────┼──────┼─────────────┼─────────────────┼──────────┤
-│ replica │ replica │ 3306 │ 0           │ Running         │          │
-└─────────┴─────────┴──────┴─────────────┴─────────────────┴──────────┘
+┌─────────┬─────────┬──────┬─────────────┬─────────────────┬──────┬─────────────────┐
+│ Server  │ Address │ Port │ Connections │ State           │ GTID │ Monitor         │
+├─────────┼─────────┼──────┼─────────────┼─────────────────┼──────┼─────────────────┤
+│ master1 │ master1 │ 3306 │ 0           │ Master, Running │      │ MariaDB-Monitor │
+├─────────┼─────────┼──────┼─────────────┼─────────────────┼──────┼─────────────────┤
+│ replica │ replica │ 3306 │ 0           │ Running         │      │ MariaDB-Monitor │
+└─────────┴─────────┴──────┴─────────────┴─────────────────┴──────┴─────────────────┘
 ```
 After MaxScale and the servers have started (takes a few minutes), you can find
 the readwritesplit router on port 4006 and the readconnroute on port 4008. The
 user `maxuser` with the password `maxpwd` can be used to test the cluster.
 Assuming the mariadb client is installed on the host machine:
 ```
-$ mysql -umaxuser -pmaxpwd -h 127.0.0.1 -P 4006 test
+$ mysql -umaxuser -pmaxpwd -h 127.0.0.1 -P 4000 
 ```
 ```
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
