@@ -65,3 +65,38 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MySQL [test]>
 ```
+
+## Configuration
+### MariaDB Servers
+Two MariaDB master servers are configured to run with Docker, each initialized with a server ID and binlog format:
+
+- master1:
+    - Port: 4001
+    - Server ID: 3000
+    - Configuration: /sql/master1
+
+- master2:
+    - Port: 4002
+    - Server ID: 3001
+    - Configuration: /sql/master2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
