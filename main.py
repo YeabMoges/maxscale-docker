@@ -1,15 +1,15 @@
 # Name: Yeabsira Moges
 # Email: yamoges@student.rtc.edu
-# Date: 09/15/2024
-# Class: CNE 370
-# Project Description: This code queries a database from a max-scale container running on 172.20.10.12
+# Date: 06/15/2024
+# Class: CNE370
+# Project Description: This code queries a database from a max-scale container running on a container
 
 import mysql.connector
 
 conn = mysql.connector.connect(
     user='maxuser',
     password='maxpwd',
-    host='172.20.10.12',
+    host='your_device_IP',
     port='4000'
 )
 cursor = conn.cursor()
