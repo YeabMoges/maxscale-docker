@@ -36,8 +36,9 @@ To run maxctrl in the container to see the status of the cluster:
 ```
 $ sudo docker-compose exec maxscale maxctrl list servers
 ```
+
+The result should look something like this
 ```
-The result should be something like this
 ┌─────────┬─────────┬──────┬─────────────┬─────────────────┬──────────┐
 │ Server  │ Address │ Port │ Connections │ State           │ GTID     │
 ├─────────┼─────────┼──────┼─────────────┼─────────────────┼──────────┤
