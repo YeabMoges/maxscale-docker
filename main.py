@@ -2,14 +2,14 @@
 # Email: yamoges@student.rtc.edu
 # Date: 06/15/2024
 # Class: CNE370
-# Project Description: This code queries a database from a max-scale container running on a container
+# Description: This code queries a database running from a max-scale container 
 
 import mysql.connector
 
 conn = mysql.connector.connect(
     user='maxuser',
     password='maxpwd',
-    host='your_device_IP',
+    host='your_device_IP', # Change your_device_Ip with the IP running the container 
     port='4000'
 )
 cursor = conn.cursor()
