@@ -4,7 +4,7 @@
 
 This setup provides a simple and efficient way to deploy MariaDB MaxScale along with two MariaDB master servers using Docker Compose.
 This Docker image runs the latest 2.4 version of MariaDB MaxScale. 
-[The MaxScale docker-compose setup](./docker-compose.yml) contains MaxScale
+[The MaxScale docker-compose setup](./maxscale/docker-compose.yml) contains MaxScale
 configured with a master container and a maxscale container.
 
 
