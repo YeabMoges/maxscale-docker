@@ -21,7 +21,7 @@ sudo apt install mariadb-server
 
 Clone the repository
 
-```
+```sh
 git clone https://github.com/YeabMoges/maxscale-docker
 cd maxscale-docker/maxscale
 ```
@@ -29,18 +29,18 @@ cd maxscale-docker/maxscale
 To start, run the
 following commands in this directory.
 
-```
+```sh
 sudo docker-compose up -d
 ```
 
 Verify
 
-```
+```sh
 sudo docker-compose ps
 ```
 
 To run maxctrl in the container to see the status of the cluster:
-```
+```sh
 sudo docker-compose exec maxscale maxctrl list servers
 ```
 
@@ -58,9 +58,10 @@ After MaxScale and the servers have started (takes a few minutes), you can find
 the readwritesplit router on port 4006 and the readconnroute on port 4008. The
 user `maxuser` with the password `maxpwd` can be used to test the cluster.
 Assuming the mariadb client is installed on the host machine:
+```sh
+mysql -umaxuser -pmaxpwd -h 127.0.0.1 -P 4000 
 ```
-$ mysql -umaxuser -pmaxpwd -h 127.0.0.1 -P 4000 
-```
+The result should look something like this
 ```
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MySQL connection id is 5
