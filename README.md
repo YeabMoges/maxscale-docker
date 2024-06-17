@@ -67,7 +67,7 @@ MySQL [test]>
 ```
 
 ## Maxscale Docker-Compose Setup
-The Docker Compose file [docker-compse.yml](./maxscale.docker.compose.yml) defines the services and their configurations:
+The Docker Compose file [docker-compse.yml](./maxscale/docker-compose.yml) defines the services and their configurations:
 ```
 version: '2'
 services:
