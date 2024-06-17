@@ -36,6 +36,7 @@ To run maxctrl in the container to see the status of the cluster:
 ```
 $ sudo docker-compose exec maxscale maxctrl list servers
 ```
+```
 The result should be something like this
 ┌─────────┬─────────┬──────┬─────────────┬─────────────────┬──────────┐
 │ Server  │ Address │ Port │ Connections │ State           │ GTID     │
@@ -44,7 +45,7 @@ The result should be something like this
 ├─────────┼─────────┼──────┼─────────────┼─────────────────┼──────────┤
 │ replica │ replica │ 3306 │ 0           │ Running         │          │
 └─────────┴─────────┴──────┴─────────────┴─────────────────┴──────────┘
-
+```
 After MaxScale and the servers have started (takes a few minutes), you can find
 the readwritesplit router on port 4006 and the readconnroute on port 4008. The
 user `maxuser` with the password `maxpwd` can be used to test the cluster.
