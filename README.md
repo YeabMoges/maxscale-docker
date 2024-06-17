@@ -11,6 +11,13 @@ configured with a master container and a maxscale container.
 The initial fork was taken from [Zohan repository](https://github.com/Zohan/maxscale-docker), which followed a 1 master and 2 slaves cluster setup. 
 
 ## Running
+Run this to update system & install requirments
+```sh
+sudo apt update & sudo apt install -y
+sudo apt install docker
+sudo apt install docker-compose
+sudo apt install mariadb-server
+```
 
 Clone the repository
 
@@ -34,7 +41,7 @@ sudo docker-compose up -d
 
 To run maxctrl in the container to see the status of the cluster:
 ```
-$ sudo docker-compose exec maxscale maxctrl list servers
+sudo docker-compose exec maxscale maxctrl list servers
 ```
 
 The result should look something like this
@@ -124,15 +131,15 @@ Two MariaDB master servers are configured to run with Docker, each initialized w
 MaxScale is configured with the following section in [example.cnf](./maxscale/maxscale.cnf.d/example.cnf):
 
 ```
-[server1]
+[master1]
 type=server
 address=master1
 port=3306
 protocol=MariaDBBackend
 
-[server2]
+[replica]
 type=server
-address=master2
+address=replica
 port=3306
 protocol=MariaDBBackend
 ```
