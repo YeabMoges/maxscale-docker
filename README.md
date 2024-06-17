@@ -66,6 +66,46 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 MySQL [test]>
 ```
 
+## Maxscale Docker-Compose Setup
+The Docker Compose file [docker-compse.yml](./maxscale.docker.compose.yml) defines the services and their configurations:
+```
+version: '2'
+services:
+    master1:
+        image: mariadb:10.3
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
+        volumes:
+            - ./sql/master1:/docker-entrypoint-initdb.d
+        command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3000
+        ports:
+            - "4001:3306"
+
+    replica:
+        image: mariadb:10.3
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
+        volumes:
+            - ./sql/replica:/docker-entrypoint-initdb.d
+        command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3001
+        ports:
+            - "4002:3306"
+
+    maxscale:
+        image: mariadb/maxscale:latest
+        depends_on:
+            - master1
+            - replica
+        volumes:
+            - ./maxscale.cnf.d:/etc/maxscale.cnf.d
+        ports:
+            - "4006:4006"  # readwrite port
+            - "4008:4008"  # readonly port
+            - "8989:8989"  # REST API port
+            - "4000:4000"  # Sharded Listener port
+```
+
+
 ## Configuration
 ### MariaDB Servers
 Two MariaDB master servers are configured to run with Docker, each initialized with a server ID and configuration directory:
