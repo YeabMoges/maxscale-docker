@@ -81,7 +81,7 @@ Two MariaDB master servers are configured to run with Docker, each initialized w
     - Configuration: /sql/master2
 
 ### Maxscale
-MaxScale is configured with the following section in [example.cnf](./maxscale-docker/maxscale/maxscale.cnf.d/example.cnf):
+MaxScale is configured with the following section in [example.cnf](./maxscale/maxscale.cnf.d/example.cnf):
 
 ```
 [server1]
@@ -98,7 +98,22 @@ protocol=MariaDBBackend
 ```
 
 ### Sharded 
-configured with the following section in [example.cnf](./maxscale-docker/maxscale/maxscale.cnf.d/example.cnf):
+configured with the following section in [example.cnf](./maxscale/maxscale.cnf.d/example.cnf):
+
+```
+[Sharded-Service]
+type=service
+router=schemarouter
+servers=master1,replica
+user=maxuser
+password=maxpwd
+
+[Sharded-Service-Listener]
+type=listener
+service=Sharded-Service
+protocol=MariaDBClient
+port=4000
+```
 
 
 
