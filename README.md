@@ -30,13 +30,13 @@ To start, run the
 following commands in this directory.
 
 ```
-docker-compose up -d
+sudo docker-compose up -d
 ```
 
 Verify
 
 ```
-sudo docker-compose up -d
+sudo docker-compose ps
 ```
 
 To run maxctrl in the container to see the status of the cluster:
